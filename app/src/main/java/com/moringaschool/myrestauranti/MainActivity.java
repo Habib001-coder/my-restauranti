@@ -8,21 +8,33 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 public  class MainActivity extends AppCompatActivity {
    public static final String TAG = MainActivity.class.getSimpleName();
-   private EditText mLocationEditText;
-    private Button mFindRestaurantiButton;
+//   private EditText mLocationEditText;
+//    private Button mFindRestaurantiButton;
+//    private TextView mAppNameTextView;
+    @BindView(R.id.findRestaurantiButton) Button mFindRestaurantiButton;
+    @BindView(R.id.locationEditText) EditText mLocationEditText;
+    @BindView(R.id.appNameTextView) TextView appNameTextView;
+
+
 
         @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mLocationEditText = (EditText) findViewById(R.id.locationEditText);
+        ButterKnife.bind(this);
+     mLocationEditText = (EditText) findViewById(R.id.locationEditText);
         mFindRestaurantiButton = (Button) findViewById(R.id. findRestaurantiButton);
             mFindRestaurantiButton.setOnClickListener(new View.OnClickListener() {
+//             mAppNameTextView = (TextView) findViewById(R.id.appNameTextView);
                 @Override
                 public void onClick(View v) {
                     String location = mLocationEditText.getText().toString();
